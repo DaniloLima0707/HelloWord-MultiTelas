@@ -11,8 +11,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText campoNome;
-    private Button btnEnviar;
+    EditText campoNome;
+    Button btnEnviar;
+    private Object SecondActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +23,12 @@ public class MainActivity extends AppCompatActivity {
         campoNome = findViewById(R.id.campoNome);
         btnEnviar = findViewById(R.id.btnEnviar);
 
+        //Ações dos botôes.
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent=new Intent(getApplicationContext(),SecondActivity.class);
+                intent.putExtra("nome", campoNome.getText().toString());
                 startActivity(intent);
             }
         });
